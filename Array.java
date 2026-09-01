@@ -32,7 +32,6 @@ class Array {
                 }
             }
         }
-
         return arr;
 
     }
