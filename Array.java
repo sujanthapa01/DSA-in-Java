@@ -1,5 +1,3 @@
-
-
 class Array {
 
 
@@ -20,9 +18,9 @@ class Array {
     }
 
 
-    static public void bubbleSort() {
+    static public int[] bubbleSort(int arr[]) {
 
-        int arr[] = {7, 6, 2, 9, 1, 0, 5};
+//        int arr[] = {-7, 6, 23, 9, 1, 0, 5};
 
         for (int i = 0; i < arr.length; i++) {
             for (int j = 0; j < arr.length; j++) {
@@ -35,14 +33,51 @@ class Array {
             }
         }
 
-        for(int o = 0; o < arr.length; o++){
-            System.out.print(arr[o]);
+        return arr;
+
+    }
+
+    static public void print(int arr[]) {
+        for (int o = 0; o < arr.length; o++) {
+            System.out.print(arr[o] + " ");
         }
     }
 
 
+    static public void find(int arr[], int target) {
+//      int arr[] = {3,9,0,1,7,14,2};
+        int newArr[] = bubbleSort(arr); //increases time complexity
+        int mid = newArr.length / 2;
+
+        boolean found = false;
+
+//     find target in first half
+        for (int i = 0; i < mid; i++) {
+            if (target == newArr[i]) {
+                found = true;
+                System.out.print("target found in first half");
+                return;
+            }
+        }
+
+//     find target in second half
+        for (int i = mid; i < newArr.length; i++) {
+            if (target == newArr[i]) {
+                found = true;
+                System.out.print("terget found in second half");
+                return;
+            }
+        }
+
+
+        print(newArr);
+
+
+    }
+
     public static void main() {
 
-        bubbleSort();
+//        bubbleSort();
+        find(new int[]{3,9,0,1,7,14,2},14);
     }
 }
