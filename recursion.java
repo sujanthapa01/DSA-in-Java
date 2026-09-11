@@ -92,29 +92,23 @@ class Main {
         find_max_element(i + 1,max, arr);
     }
 
-    static public int count_repeated_numbers(int i, int target, int count, int[] arr){
-        if(i > arr.length - 1){
-            return count;
+    static public void count_repeated_numbers(int i, int target, int count, int[] arr) {
+        if (i > arr.length - 1) {
+            System.out.println("target: "+ target + "  ||  count: "+ count);
+            return;
         }
-        if(target == arr[i]){
-//            System.out.println("loop is ruunning!" + count);
-
-            count = count + 1;
+            if (target == arr[i]) {
+                count = count + 1;
+            }
+            count_repeated_numbers(i+1 , target, count, arr);
         }
 
-        count_repeated_numbers(i + 1,target, count, arr);
 
+        public static void main (String[]args) {
+            System.out.println("Start small. Ship something.");
 
-        return count;
-    }
-
-
-
-    public static void main(String[] args) {
-        System.out.println("Start small. Ship something.");
-
-        // printNum(0);
-        // addSum(1, 100,0);
+            // printNum(0);
+            // addSum(1, 100,0);
 //        int result = factorial(200);
 //        System.out.println(result);
 
@@ -127,8 +121,8 @@ class Main {
 //        printHelloWorld(0,10);
 //        printEven(0,20);
 //        find_max_element(0,0,new int[] {1,2,4,5,122});
-         int count = count_repeated_numbers(0, 2,0, new int[] {3,4,5,2,1,6,3,2,5,2});
-         System.out.println(count);
-    }
+//
+          count_repeated_numbers(0, 1, 0, new int[]{3, 4, 5, 2, 1,2,3,1,2,3,2,2,3,2,3,2,3,1,1,3,2,2,3,43,23,4,2,2,23,2,6, 3, 2, 5, 2});
 
+}
 }
