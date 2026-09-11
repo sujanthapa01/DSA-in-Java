@@ -39,7 +39,7 @@ class Main {
         return result;
     }
 
-    public static void fabonachi(int value1, int value2, int n){
+    public static void fibonacci(int value1, int value2, int n){
 
         if(n == 0){
             return;
@@ -47,9 +47,68 @@ class Main {
 
         int value3 = value1 + value2;
         System.out.println(value3);
-        fabonachi(value2,value3,n-1);
+        fibonacci(value2,value3,n-1);
 
     }
+
+    public static void printHelloWorld(int i, int n){
+
+        if(i == n){
+            return;
+        }
+
+        System.out.println("hello world");
+        printHelloWorld(i+1,n);
+    }
+
+    static public void printEven(int i , int n){
+
+        if(i > n){
+            return ;
+        }
+        if(i%2 == 0){
+            System.out.println( i + " is even.");
+        }else {
+            System.out.println(i + " is odd.");
+        }
+
+        printEven(i + 1, n);
+    }
+
+
+    static public void find_max_element(int i, int max, int[] arr){
+        int size = arr.length;
+
+         if( i > size - 1){
+             System.out.println("max element is "+ max);
+             return;
+    }
+
+        if( max < arr[i]){
+            max = arr[i];
+//            System.out.println("find max loop runned!");
+        }
+
+        find_max_element(i + 1,max, arr);
+    }
+
+    static public int count_repeated_numbers(int i, int target, int count, int[] arr){
+        if(i > arr.length - 1){
+            return count;
+        }
+        if(target == arr[i]){
+//            System.out.println("loop is ruunning!" + count);
+
+            count = count + 1;
+        }
+
+        count_repeated_numbers(i + 1,target, count, arr);
+
+
+        return count;
+    }
+
+
 
     public static void main(String[] args) {
         System.out.println("Start small. Ship something.");
@@ -59,9 +118,17 @@ class Main {
 //        int result = factorial(200);
 //        System.out.println(result);
 
-        int n = 20;
-        System.out.println(0);
-        System.out.println(1);
-        fabonachi(0,1,n-2);
+//        int n = 20;
+//        System.out.println(0);
+//        System.out.println(1);
+//        fabonachi(0,1,n-2);
+
+
+//        printHelloWorld(0,10);
+//        printEven(0,20);
+//        find_max_element(0,0,new int[] {1,2,4,5,122});
+         int count = count_repeated_numbers(0, 2,0, new int[] {3,4,5,2,1,6,3,2,5,2});
+         System.out.println(count);
     }
+
 }
