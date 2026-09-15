@@ -6,9 +6,12 @@ class Sorting {
         for (int i = 0; i < n - 1; i++) {
             int minIndex = i;
 
+
             for (int j = i + 1; j < n; j++) {
+                System.out.println("j: "+ j);
                 if (arr[j] < arr[minIndex]) {
                     minIndex = j;
+                    System.out.println("min index:"+minIndex);
                 }
             }
             // swap the minIndex with the arr[i]
