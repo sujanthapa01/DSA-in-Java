@@ -2,7 +2,7 @@ import java.util.*;
 
 class BackTracking {
 
-    static public void backtrack(int[] nums, int index, List<Integer> current) {
+    static public void subsets(int[] nums, int index, List<Integer> current) {
 
         if (index == nums.length ) {
             System.out.println(current);
@@ -10,16 +10,57 @@ class BackTracking {
         }
 
         current.add(nums[index]);
-        backtrack(nums, index + 1, current);
+        subsets(nums, index + 1, current);
 
         current.remove(current.size() - 1);
-        backtrack(nums, index + 1, current);
+        subsets(nums, index + 1, current);
     }
+
+
+    static public void subsequence(String words, int index, String sets){
+
+        if(index == words.length()){
+            System.out.println(sets);
+            return;
+        }
+
+        sets += words.charAt(index);
+        subsequence(words, index + 1, sets);
+
+        sets = sets.substring(0, sets.length() - 1);
+        subsequence(words, index + 1, sets);
+    }
+
+//
+//    static public void subsequence(String words, int index, List<String> sets){
+//
+//        if(index == words.length()){
+//            System.out.println(sets);
+//            return;
+//        }
+//        sets.add(String.valueOf(words.charAt(index)));
+//        subsequence(words, index + 1, sets);
+//
+//        sets.remove(sets.size() - 1);
+//        subsequence(words, index + 1, sets);
+//    }
+
+
 
     static public void main() {
 
-        int[] nums = {1, 2,3,2,4,2};
-        backtrack(nums, 0, new ArrayList<>());
+//        String[] words = {"A","B","C","R"};
+//        subsets(nums, 0, new ArrayList<>());
+
+        String words = "sujanThapa";
+
+        subsequence(words, 0 , "");
+//
+//        String str = "ASS";
+//
+//        System.out.println(str.length());
+//        System.out.println(str.charAt(2));
+
     }
 
 }
