@@ -1,3 +1,5 @@
+import java.util.HashSet;
+
 class LinkListPractice {
 
 
@@ -64,18 +66,87 @@ class LinkListPractice {
 
     }
 
-    static void main() {
+
+    Node createCycle(int position){
+       if(head == null){
+           return head;
+       }
+
+       Node target = head;
+
+       for(int i =0; i< position; i++){
+           if(target == null){
+               return target;
+           }
+
+           System.out.println("position: " + position + "|  target: " + target.val);
+           target = target.next;
+       }
+
+       if(target == null){
+           return target;
+       }
+
+       Node current = head;
+
+       while(current.next != null){
+           current = current.next;
+       }
+
+       current.next = target;
+       return current;
+    }
+
+
+
+     void printCycle(){
+
+         Node current = head;
+
+        HashSet<Node> visited = new HashSet<>();
+
+
+        while(current != null){
+
+            if(visited.contains(current)){
+                System.out.print("cycle connects to " + current.val);
+            return;
+            }
+
+            visited.add(current);
+            System.out.print(current.val + " -> ");
+            current = current.next;
+        }
+
+        System.out.print("null");
+
+    }
+
+
+
+       void main() {
 
         LinkListPractice ll1 = new LinkListPractice();
         ll1.addFirst(10);
         ll1.addFirst(20);
         ll1.addFirst(30);
-//        ll1.print();
-        ll1.recursivePrint(ll1.head);
-        ll1.deleteValue(ll1.head,20);
-        ll1.recursivePrint(ll1.head);
-        ll1.deleteValue(ll1.head, 10);
-        ll1.recursivePrint(ll1.head);
+        ll1.addFirst(40);
+        ll1.print();
+        System.out.println();
+//        ll1.recursivePrint(ll1.head);
+//        ll1.deleteValue(ll1.head,20);
+//        ll1.recursivePrint(ll1.head);
+//        ll1.deleteValue(ll1.head, 10);
+//        ll1.recursivePrint(ll1.head);
+
+
+//        linklist cycle
+       Node cycleNode =  ll1.createCycle(1);
+//        System.out.println(cycleNode.next.val);
+        ll1.printCycle();
+
+
+
     }
 
     //    Node of the Linked List
